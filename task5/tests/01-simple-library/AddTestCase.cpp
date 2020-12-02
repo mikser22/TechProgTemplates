@@ -5,3 +5,10 @@
 #include "AddTestCase.h"
 #include "Functions.h"
 
+TEST(AddFunc, test1) {
+    ASSERT_EQ(Add(200, 28), 228);
+}
+
+TEST(AddFunc, test2) {
+    ASSERT_NE(Add(2, 2), 3);
+}
