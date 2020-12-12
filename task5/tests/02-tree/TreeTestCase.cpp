@@ -50,3 +50,16 @@ TEST(GetTree, test4) {
     boost::filesystem::remove_all("folderName2");
     boost::filesystem::remove_all("folderName2/filename");
 }
+
+TEST(GetTree, test5) {
+    FileNode node1;
+    node1.name = "folderName";
+    node1.is_dir = true;
+    create_directory("folderName");
+    ofstream file("folderName/filename");
+
+
+    ASSERT_FALSE(GetTree("folderName", false) == GetTree("folderName", true));
+    boost::filesystem::remove_all("folderName");
+    boost::filesystem::remove_all("folderName/filename");
+}
