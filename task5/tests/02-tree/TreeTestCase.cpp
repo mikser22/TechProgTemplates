@@ -17,6 +17,7 @@ TEST(GetTree, test1) {
 TEST(GetTree, test2) {
     ofstream file("filename");
     ASSERT_THROW(GetTree("filename", true), std::invalid_argument);
+    boost::filesystem::remove_all("filename");
 }
 
 TEST(GetTree, test3) {
@@ -33,6 +34,8 @@ TEST(GetTree, test3) {
 
 
     ASSERT_EQ(GetTree("folderName", true), node1);
+    boost::filesystem::remove_all("folderName");
+    boost::filesystem::remove_all("folderName/node2");
 }
 
 TEST(GetTree, test4) {
@@ -44,4 +47,6 @@ TEST(GetTree, test4) {
 
 
     ASSERT_EQ(GetTree("folderName2", true), node1);
+    boost::filesystem::remove_all("folderName2");
+    boost::filesystem::remove_all("folderName2/filename");
 }
